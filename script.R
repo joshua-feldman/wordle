@@ -3,7 +3,7 @@ library(tidyverse)
 library(parallel) # For parallel processing
 library(dtplyr)
 
-dict <- source("~/Desktop/wordle_dictionary.R")$value
+dict <- source("wordle_dictionary.R")$value
 
 df <- data.frame(word = dict) %>% arrange(word)
 # df <- words %>% filter(word_length == 5) %>% select(-word_length)
