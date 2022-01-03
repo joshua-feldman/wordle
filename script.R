@@ -29,23 +29,23 @@ calculate_problem_space <- function(x) {
   
   # # Use base R for filtering and conditionals to be more efficient
   df_wide <- df_wide[if(status[1] == "green") {guess_parsed[1] == df_wide$letter1}
-                     else if (status[1] == "orange") {guess_parsed[1] == df_wide$letter2 | guess_parsed[1] == df_wide$letter3 | guess_parsed[1] == df_wide$letter4 | guess_parsed[1] == df_wide$letter5}
+                     else if (status[1] == "orange") {guess_parsed[1] != df_wide$letter1 & (guess_parsed[1] == df_wide$letter2 | guess_parsed[1] == df_wide$letter3 | guess_parsed[1] == df_wide$letter4 | guess_parsed[1] == df_wide$letter5)}
                      else {guess_parsed[1] != df_wide$letter1 & guess_parsed[1] != df_wide$letter2 & guess_parsed[1] != df_wide$letter3 & guess_parsed[1] != df_wide$letter4 & guess_parsed[1] != df_wide$letter5},]
   
   df_wide <- df_wide[if (status[2] == "green") {guess_parsed[2] == df_wide$letter2}
-                     else if (status[2] == "orange") {guess_parsed[2] == df_wide$letter1 | guess_parsed[2] == df_wide$letter3 | guess_parsed[2] == df_wide$letter4 | guess_parsed[2] == df_wide$letter5}
+                     else if (status[2] == "orange") {guess_parsed[2] != df_wide$letter2 & (guess_parsed[2] == df_wide$letter1 | guess_parsed[2] == df_wide$letter3 | guess_parsed[2] == df_wide$letter4 | guess_parsed[2] == df_wide$letter5)}
                      else {guess_parsed[2] != df_wide$letter1 & guess_parsed[2] != df_wide$letter2 & guess_parsed[2] != df_wide$letter3 & guess_parsed[2] != df_wide$letter4 & guess_parsed[2] != df_wide$letter5},]
   
   df_wide <- df_wide[if(status[3] == "green") {guess_parsed[3] == df_wide$letter3}
-                     else if(status[3] == "orange") {guess_parsed[3] == df_wide$letter1 | guess_parsed[3] == df_wide$letter2 | guess_parsed[3] == df_wide$letter4 | guess_parsed[3] == df_wide$letter5}
+                     else if(status[3] == "orange") {guess_parsed[3] != df_wide$letter3 & (guess_parsed[3] == df_wide$letter1 | guess_parsed[3] == df_wide$letter2 | guess_parsed[3] == df_wide$letter4 | guess_parsed[3] == df_wide$letter5)}
                      else {guess_parsed[3] != df_wide$letter1 & guess_parsed[3] != df_wide$letter2 & guess_parsed[3] != df_wide$letter3 & guess_parsed[3] != df_wide$letter4 & guess_parsed[3] != df_wide$letter5},]
   
   df_wide <- df_wide[if(status[4] == "green") {guess_parsed[4] == df_wide$letter4}
-                     else if(status[4] == "orange") {guess_parsed[4] == df_wide$letter1 | guess_parsed[4] == df_wide$letter2 | guess_parsed[4] == df_wide$letter3 | guess_parsed[4] == df_wide$letter5}
+                     else if(status[4] == "orange") {guess_parsed[4] != df_wide$letter4 & (guess_parsed[4] == df_wide$letter1 | guess_parsed[4] == df_wide$letter2 | guess_parsed[4] == df_wide$letter3 | guess_parsed[4] == df_wide$letter5)}
                      else {guess_parsed[4] != df_wide$letter1 & guess_parsed[4] != df_wide$letter2 & guess_parsed[4] != df_wide$letter3 & guess_parsed[4] != df_wide$letter4 & guess_parsed[4] != df_wide$letter5},]
   
   df_wide <- df_wide[if(status[5] == "green") {guess_parsed[5] == df_wide$letter5}
-                     else if(status[5] == "orange") {guess_parsed[5] == df_wide$letter1 | guess_parsed[5] == df_wide$letter2 | guess_parsed[5] == df_wide$letter3 | guess_parsed[5] == df_wide$letter4}
+                     else if(status[5] == "orange") {guess_parsed[5] != df_wide$letter5 & (guess_parsed[5] == df_wide$letter1 | guess_parsed[5] == df_wide$letter2 | guess_parsed[5] == df_wide$letter3 | guess_parsed[5] == df_wide$letter4)}
                      else {guess_parsed[5] != df_wide$letter1 & guess_parsed[5] != df_wide$letter2 & guess_parsed[5] != df_wide$letter3 & guess_parsed[5] != df_wide$letter4 & guess_parsed[5] != df_wide$letter5},]
   
   # Return the size of the updated problem space
@@ -53,8 +53,8 @@ calculate_problem_space <- function(x) {
   
 }
 
-calculate_problem_space(c("mouse", "xylyl"))
-calculate_problem_space(c("horse", "house"))
+x <- calculate_problem_space(c("mouse", "foust"))
+x <- calculate_problem_space(c("lanes", "lares"))
 
 word_grid <- expand.grid(answer = df$word, guess = df$word)
 
